@@ -3,7 +3,7 @@
     {{ template "Menu" }} 
    <h2>Edit expense</h2>  
     <form method="POST" action="update">
-      <input type="text" name="expense_id" value="{{ .Expense_id }}" />
+      <input type="hidden" name="expense_id" value="{{ .Expense_id }}" />
       <label> Expense name </label><input type="text" name="expense_name" value="{{ .Expense_name }}"  /><br />
       <label> Expense value </label><input type="text" name="expense_value" value="{{ .Expense_value }}"  /><br />
       <label> Incurred on </label><input type="date" name="incurred_on" value="{{ .Incurred_on }}"  /><br />

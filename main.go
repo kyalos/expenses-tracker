@@ -138,7 +138,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			panic(err.Error())
 		}
-		insForm.Exec(expense_name, expense_value, expense_id, incurred_on)
+		insForm.Exec(expense_name, expense_value, incurred_on, expense_id)
 		log.Println("UPDATE: Expense_name: " + expense_name + " | Expense_value: " + expense_value + " | Incurred_on: " + incurred_on + " | Where: " + expense_id)
 	}
 	defer db.Close()
