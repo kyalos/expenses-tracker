@@ -2,7 +2,8 @@
   {{ template "Header" }}
     {{ template "Menu"  }}
     <h2> Register {{ .Expense_id }} </h2>
-      <p>Name: {{ .Expense_name }}</p>
-      <p>City:  {{ .Expense_value }}</p><br /> <a href="/edit?id={{ .Expense_id }}">Edit</a></p>
+      <p>Expense name: {{ .Expense_name }}</p>
+      <p>Expense value:  {{ .Expense_value }}</p>
+      <p>Incurred on:  {{ .Incurred_on }}</p><br /> <a href="/edit?expense_id={{ .Expense_id }}">Edit</a></p>
   {{ template "Footer" }}
 {{ end }}

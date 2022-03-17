@@ -114,7 +114,7 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 		expense_name := r.FormValue("expense_name")
 		expense_value := r.FormValue("expense_value")
 		incurred_on := r.FormValue("incurred_on")
-		insForm, err := db.Prepare("INSERT INTO Expenses(expense_name, expense_value, incurred_on) VALUES(?,?)")
+		insForm, err := db.Prepare("INSERT INTO Expenses(expense_name, expense_value, incurred_on) VALUES(?,?,?)")
 		if err != nil {
 			panic(err.Error())
 		}
@@ -132,12 +132,14 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		expense_value := r.FormValue("expense_value")
 		incurred_on := r.FormValue("incurred_on")
 		expense_id := r.FormValue("expense_id")
+
+		//expense_id := r.URL.Query().Get("expense_id")
 		insForm, err := db.Prepare("UPDATE Expenses SET expense_name=?, expense_value=?, incurred_on=? WHERE expense_id=?")
 		if err != nil {
 			panic(err.Error())
 		}
 		insForm.Exec(expense_name, expense_value, expense_id, incurred_on)
-		log.Println("UPDATE: Expense_name: " + expense_name + " | Expense_value: " + expense_value + " | Incurred_on: " + incurred_on)
+		log.Println("UPDATE: Expense_name: " + expense_name + " | Expense_value: " + expense_value + " | Incurred_on: " + incurred_on + " | Where: " + expense_id)
 	}
 	defer db.Close()
 	http.Redirect(w, r, "/", 301)
@@ -157,7 +159,7 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	log.Println("Server started on: http://localhost:8080")
+	log.Println("Server started on: http://localhost:8081")
 	http.HandleFunc("/", Index)
 	http.HandleFunc("/show", Show)
 	http.HandleFunc("/new", New)
@@ -165,5 +167,5 @@ func main() {
 	http.HandleFunc("/insert", Insert)
 	http.HandleFunc("/update", Update)
 	http.HandleFunc("/delete", Delete)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8081", nil)
 }

@@ -19,9 +19,9 @@
         <td>{{ .Expense_id }}</td>
         <td> {{ .Expense_name }} </td>
         <td>{{ .Expense_value }} </td> 
-        <td><a href="/show?id={{ .Expense_id }}">View</a></td>
-        <td><a href="/edit?id={{ .Expense_id }}">Edit</a></td>
-        <td><a href="/delete?id={{ .Expense_id }}">Delete</a><td>
+        <td><a href="/show?expense_id={{ .Expense_id }}">View</a></td>
+        <td><a href="/edit?expense_id={{ .Expense_id }}">Edit</a></td>
+        <td><a href="/delete?expense_id={{ .Expense_id }}">Delete</a><td>
       </tr>
     {{ end }}
        </tbody>
