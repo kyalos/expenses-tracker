@@ -1,0 +1,12 @@
+{{ define "Edit" }}
+  {{ template "Header" }}
+    {{ template "Menu" }} 
+   <h2>Edit expense</h2>  
+    <form method="POST" action="update">
+      <input type="hidden" name="expense_id" value="{{ .Expense_id }}" />
+      <label> Name </label><input type="text" name="expense_name" value="{{ .Expense_name }}"  /><br />
+      <label> City </label><input type="text" name="expense_value" value="{{ .Expense_value }}"  /><br />
+      <input type="submit" value="Save expense" />
+    </form><br />    
+  {{ template "Footer" }}
+{{ end }}

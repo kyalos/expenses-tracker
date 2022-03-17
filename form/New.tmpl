@@ -1,0 +1,12 @@
+{{ define "New" }}
+  {{ template "Header" }}
+    {{ template "Menu" }} 
+   <h2>New expense</h2>  
+    <form method="POST" action="insert">
+      <label> Expense name </label><input type="text" name="expense_name" /><br />
+      <label> Expense value </label><input type="text" name="expense_value" /><br />
+      <label> Incurred on </label><input type="date" name="incurred_on" /><br />
+      <input type="submit" value="Save expense" />
+    </form>
+  {{ template "Footer" }}
+{{ end }}
